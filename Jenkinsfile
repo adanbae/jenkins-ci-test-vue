@@ -1,19 +1,19 @@
 pipeline {
-    agent any
-    tools { nodejs 'node'}
-    environment {
-      CI = true
+  agent any
+  tools { nodejs 'node'}
+  environment {
+    CI = true
+  }
+  stages {
+    stage('Build') { 
+      steps {
+          sh 'npm install'
+      }
     }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm test'
-            }
-        }
+    stage('Test') {
+      steps {
+          sh 'npm test'
+      }
     }
+  }
 }
